@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>直播資料看板</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="screen screen-dashboard">
+    <main class="board-shell">
+      <header class="board-header">
+        <p class="eyebrow">Live Data Board</p>
+        <h1 id="boardTitle">直播資料看板</h1>
+        <p id="boardSubtitle" class="subtitle"></p>
+      </header>
+
+      <section class="panel">
+        <div id="boardList" class="board-list"></div>
+      </section>
+
+      <footer class="board-footer">
+        <span id="updatedAt">尚未更新</span>
+      </footer>
+    </main>
+
+    <script src="/index.js" defer></script>
+  </body>
+</html>
