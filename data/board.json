@@ -1,0 +1,56 @@
+{
+  "title": "即時資料",
+  "subtitle": "抱願不抱怨 莫忘初衷",
+  "refreshSeconds": 2,
+  "items": [
+    {
+      "label": "台中忠明空氣品質",
+      "value": "100",
+      "enabled": true,
+      "marked": false
+    },
+    {
+      "label": "2026丙午年白沙屯往北港徒步進香",
+      "value": "圓滿結束",
+      "enabled": true,
+      "marked": false
+    },
+    {
+      "label": "距離期中考還剩",
+      "value": "4天",
+      "enabled": true,
+      "marked": false
+    },
+    {
+      "label": "國語測驗卷",
+      "value": "-已完成-",
+      "enabled": true,
+      "marked": false
+    },
+    {
+      "label": "自然測驗卷",
+      "value": "-已完成-",
+      "enabled": true,
+      "marked": false
+    },
+    {
+      "label": "英文測驗卷",
+      "value": "-已完成-",
+      "enabled": true,
+      "marked": false
+    },
+    {
+      "label": "數學測驗卷",
+      "value": "剩下8張",
+      "enabled": true,
+      "marked": false
+    },
+    {
+      "label": "社會測驗卷",
+      "value": "-已完成",
+      "enabled": true,
+      "marked": false
+    }
+  ],
+  "updatedAt": "2026-04-22T10:20:04.228610+00:00"
+}
