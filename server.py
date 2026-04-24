@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import mimetypes
+import os  # 新增：用於讀取環境變數
 from datetime import datetime, timezone
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -13,12 +14,16 @@ BASE_DIR = Path(__file__).resolve().parent
 PUBLIC_DIR = BASE_DIR / "public"
 DATA_DIR = BASE_DIR / "data"
 DATA_FILE = DATA_DIR / "board.json"
-HOST = "127.0.0.1"
-PORT = 8787
+
+# --- 修改重點：適應雲端部署 ---
+# 1. HOST 必須為 0.0.0.0 才能讓外部訪問
+HOST = "0.0.0.0" 
+# 2. 優先讀取 Render 分配的 PORT，本機執行預設 8787
+PORT = int(os.environ.get("PORT", 8787))
 
 DEFAULT_DATA = {
     "title": "直播資料看板",
-    "subtitle": "在管理頁輸入每行一筆，格式為：左邊|右邊",
+    "subtitle": "在管理頁輸入每行一筆，格式為：左邊|邊",
     "refreshSeconds": 5,
     "items": [
         {
@@ -131,13 +136,19 @@ class DashboardHandler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def log_message(self, format: str, *args) -> None:
+        # 關閉預設日誌以保持終端機乾淨，若需偵錯可註解掉此行
         return
 
 
 def main() -> None:
     ensure_data_file()
+    # 建立伺服器並綁定到正確的 HOST 與 PORT
     server = ThreadingHTTPServer((HOST, PORT), DashboardHandler)
-    print(f"Dashboard running at http://{HOST}:{PORT}")
+    print(f"--- 看板系統啟動 ---")
+    print(f"監聽地址: {HOST}")
+    print(f"埠號: {PORT}")
+    print(f"本機預覽: http://localhost:{PORT}")
+    print(f"-------------------")
     server.serve_forever()
 
 
