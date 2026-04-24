@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>看板管理</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="screen screen-admin">
+    <main class="admin-shell">
+      <section class="panel admin-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Dashboard Admin</p>
+            <h1>看板管理</h1>
+          </div>
+          <a class="ghost-button" href="/" target="_blank" rel="noreferrer">開看板</a>
+        </div>
+
+        <label class="field">
+          <span>看板標題</span>
+          <input id="titleInput" type="text" placeholder="例如：直播跑馬燈資訊" />
+        </label>
+
+        <label class="field">
+          <span>副標題</span>
+          <input id="subtitleInput" type="text" placeholder="例如：最新停駕與即時數值" />
+        </label>
+
+        <label class="field small-field">
+          <span>OBS 自動更新秒數</span>
+          <input id="refreshInput" type="number" min="2" max="60" value="5" />
+        </label>
+
+        <label class="field">
+          <span>條目內容</span>
+          <textarea
+            id="itemsInput"
+            rows="14"
+            placeholder="每行一筆，格式：左邊|右邊*&#10;白沙、山邊媽祖往北港徒步進香|停駕-慈心聖母聯誼會*&#10;目前空氣品質|75*"
+          ></textarea>
+        </label>
+
+        <div class="action-row">
+          <button id="saveButton" class="primary-button" type="button">儲存</button>
+          <button id="reloadButton" class="ghost-button" type="button">重新載入資料</button>
+          <span id="statusText" class="status-text"></span>
+        </div>
+      </section>
+
+      <section class="panel admin-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Format Preview</p>
+            <h2>輸入格式說明</h2>
+          </div>
+        </div>
+
+        <ul class="tips-list">
+          <li>每行一筆資料。</li>
+          <li>使用 `|` 分隔左右欄位。</li>
+          <li>預設全部都是正常顯示，新資料會自動勾選。</li>
+          <li>右側勾選框決定前台是否顯示原始右欄內容。</li>
+          <li>取消勾選後，前台與預覽右欄會改成「內容資料解析失敗」。</li>
+          <li>行尾的 `*` 仍可保留，例如：`左邊|右邊*`，但不再是正常顯示的必要條件。</li>
+          <li>沒有 `|` 時，整行會當成左欄，右欄仍依勾選狀態判定。</li>
+          <li>儲存後，OBS 重新整理或等待自動更新即可看到新資料。</li>
+        </ul>
+
+        <div id="previewList" class="preview-list"></div>
+      </section>
+    </main>
+
+    <script src="/admin.js" defer></script>
+  </body>
+</html>
